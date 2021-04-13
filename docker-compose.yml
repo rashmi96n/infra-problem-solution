@@ -6,8 +6,8 @@ services:
       - "8000:8000"
     restart: unless-stopped 
 
-  front-end:
-    build: ./front-end/
+  frontend:
+    build: ./frontend/
     ports:
       - "80:8001"
     restart: unless-stopped
