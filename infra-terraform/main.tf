@@ -1,8 +1,8 @@
 # Specify the provider and access details
 provider "aws" {
-  region = "eu-west-1"
-  access_key = "AKIAZWJRXR5ANGDSZ36M"
-  secret_key = "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"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
+  region ="${var.region}"
 }
 
 
@@ -141,8 +141,9 @@ resource "aws_instance" "web" {
   ami = "${lookup(var.aws_amis, var.aws_region)}"
 
   # The name of our SSH keypair we created above.
-  key_name = "rashmi"
-  
+  key_name = "${var.key_name}"
+
+
   # Tag for the aws instance
   tags = {
     Name = "TWApp"
@@ -171,4 +172,9 @@ provisioner "remote-exec" {
       "$HOME/automation.sh"
     ]
   }
+}
+
+
+output "public_ip_of_frontend_app" {
+  value = aws_instance.web.*.public_ip
 }

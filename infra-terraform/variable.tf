@@ -1,17 +1,37 @@
-variable "public_key_path" {
+#add aws access key
+variable "aws_access_key" {
+   type = string
+   default = ""
+}
+
+#add secret  key
+variable "aws_secret_key" {
+   type = string
+   default = ""
+}
+
+
+#modify the region to your config
+variable "region" {
+  type = string
+  default = "eu-west-1"
+}
+
+
+variable "private_key_path" {
   description = <<DESCRIPTION
-Path to the SSH public key to be used for authentication.
-copy from the create_keygen.sh
+Path to the SSH private key to be used for authentication in connection block
+Please add your private key path or private key = .pem file
 DESCRIPTION
-type = "string"
-default = "/tmp/ssh_util//keypair.key.pub"
+type = string
+default = ""
 }
 
 
 #modify the key name to your config
 variable "key_name" {
   description = "Desired name of AWS key pair"
-  type = "string"
+  type = string
   default = "rashmi"
 }
 

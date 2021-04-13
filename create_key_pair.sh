@@ -53,6 +53,6 @@ KEY_ALGORITHM="rsa"
         exit 1
     fi
 
-export TF_VAR_ssh_public_key=$(base64 -w 0 $PUBLIC_KEY_FD)
+export TF_VAR_ssh_private_key=$(base64 -w 0 $PUBLIC_KEY_FD)
 #echo "New Encoded Public Key: $TF_VAR_ssh_public_key"
 #echo "New Decoded Public Key: "$(echo "$TF_VAR_ssh_public_key" | base64 -d)
